@@ -1,0 +1,180 @@
+version: '3.8'
+
+# Enterprise Linux Docker Environment
+# Multi-distribution setup with networking and monitoring
+
+services:
+  # Red Hat Enterprise Linux (UBI)
+  rhel-enterprise:
+    build:
+      context: .
+      dockerfile: Dockerfile.rhel
+    image: enterprise/rhel-ubi:latest
+    container_name: rhel-prod-server
+    hostname: rhel-enterprise
+    restart: unless-stopped
+    command: tail -f /dev/null
+    networks:
+      - enterprise-network
+    volumes:
+      - rhel-logs:/logs
+      - rhel-config:/config
+      - shared-data:/shared
+    environment:
+      - ENVIRONMENT=production
+      - SERVICE_NAME=rhel-enterprise
+      - LOG_LEVEL=info
+    labels:
+      - "com.company.environment=production"
+      - "com.company.service=rhel-enterprise"
+      - "com.company.team=devops"
+    healthcheck:
+      test: ["CMD", "whoami"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Ubuntu LTS Enterprise
+  ubuntu-enterprise:
+    build:
+      context: .
+      dockerfile: Dockerfile.ubuntu  
+    image: enterprise/ubuntu-lts:latest
+    container_name: ubuntu-prod-server
+    hostname: ubuntu-enterprise
+    restart: unless-stopped
+    command: tail -f /dev/null
+    networks:
+      - enterprise-network
+    volumes:
+      - ubuntu-logs:/logs
+      - ubuntu-config:/config
+      - shared-data:/shared
+    environment:
+      - ENVIRONMENT=production
+      - SERVICE_NAME=ubuntu-enterprise
+      - LOG_LEVEL=info
+    labels:
+      - "com.company.environment=production"
+      - "com.company.service=ubuntu-enterprise"
+      - "com.company.team=devops"
+    healthcheck:
+      test: ["CMD", "whoami"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # CentOS Legacy Support
+  centos-legacy:
+    image: centos:7
+    container_name: centos-legacy-server
+    hostname: centos-legacy
+    restart: unless-stopped
+    networks:
+      - enterprise-network
+    volumes:
+      - centos-logs:/var/log
+      - shared-data:/shared
+    environment:
+      - ENVIRONMENT=legacy
+      - SERVICE_NAME=centos-legacy
+    command: tail -f /dev/null
+    labels:
+      - "com.company.environment=legacy"
+      - "com.company.service=centos-legacy"
+      - "com.company.team=devops"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Monitoring and Management (Portainer CE)
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer-management
+    hostname: portainer
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    networks:
+      - enterprise-network
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+    environment:
+      - ADMIN_PASSWORD_FILE=/tmp/portainer_password
+    labels:
+      - "com.company.service=monitoring"
+      - "com.company.team=devops"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Networks
+networks:
+  enterprise-network:
+    driver: bridge
+    name: enterprise-net
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+          gateway: 172.20.0.1
+    labels:
+      - "com.company.network=enterprise"
+
+# Volumes
+volumes:
+  rhel-logs:
+    name: rhel-enterprise-logs
+    labels:
+      - "com.company.volume=rhel-logs"
+  ubuntu-logs:
+    name: ubuntu-enterprise-logs
+    labels:
+      - "com.company.volume=ubuntu-logs"
+  centos-logs:
+    name: centos-legacy-logs
+    labels:
+      - "com.company.volume=centos-logs"
+  rhel-config:
+    name: rhel-enterprise-config
+    labels:
+      - "com.company.volume=rhel-config"
+  ubuntu-config:
+    name: ubuntu-enterprise-config
+    labels:
+      - "com.company.volume=ubuntu-config"
+  shared-data:
+    name: enterprise-shared-data
+    labels:
+      - "com.company.volume=shared-data"
+  portainer-data:
+    name: portainer-management-data
+    labels:
+      - "com.company.volume=portainer-data"
+
+# Enterprise Docker Environment
+# Features:
+# - Multi-distribution Linux support (RHEL UBI, Ubuntu LTS, CentOS)
+# - Secure networking with custom bridge network
+# - Persistent volumes for data and logs
+# - Health checks and monitoring
+# - Centralized logging configuration
+# - Container management via Portainer
+# - Production-ready labels and metadata

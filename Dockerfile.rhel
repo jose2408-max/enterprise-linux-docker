@@ -1,0 +1,63 @@
+# Enterprise RHEL UBI Container
+# Base image: Red Hat Universal Base Image 9
+FROM registry.access.redhat.com/ubi9/ubi:latest
+
+# Metadata labels following enterprise standards
+LABEL maintainer="DevOps Team <devops@company.com>" \
+      version="1.0.0" \
+      description="Enterprise RHEL UBI container with security hardening" \
+      vendor="Company Name" \
+      release-date="2024-01-15" \
+      security.scan="enabled" \
+      compliance.level="enterprise"
+
+# Create non-root user for security
+RUN groupadd -r appuser && \
+    useradd -r -g appuser -m -s /bin/bash appuser && \
+    mkdir -p /app /logs /config && \
+    chown -R appuser:appuser /app /logs /config
+
+# Update system packages and install essential tools
+RUN dnf update -y && \
+    dnf install -y \
+        wget \
+        vim \
+        git \
+        procps-ng \
+        bind-utils \
+        openssh-clients \
+        sudo \
+        findutils \
+    && dnf clean all \
+    && rm -rf /var/cache/dnf
+
+# Configure sudo for appuser (enterprise practice)
+RUN echo "appuser ALL=(ALL) NOPASSWD: /usr/bin/dnf, /usr/bin/systemctl" >> /etc/sudoers.d/appuser
+
+# Set secure permissions
+RUN chmod 750 /app /logs /config
+
+# Create application directories with proper ownership
+WORKDIR /app
+
+# Copy application files (when available)
+# COPY --chown=appuser:appuser ./app/ /app/
+
+# Switch to non-root user
+USER appuser
+
+# Set environment variables
+ENV ENVIRONMENT=production \
+    LOG_LEVEL=info \
+    APP_HOME=/app
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD whoami || exit 1
+
+# Default command
+CMD ["bash"]
+
+# Security: Run as non-root, minimal attack surface
+# Compliance: Follows enterprise container security standards
+# Maintainability: Clear labeling and structured approach
